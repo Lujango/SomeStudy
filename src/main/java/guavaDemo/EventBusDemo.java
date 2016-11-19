@@ -44,9 +44,8 @@ public class EventBusDemo {
             }
         });
 
-    //    eventBus.post(1);
-    //    eventBus.post(1L);
-     //   eventBus.post(new Foo("hehe","haha"));
         eventBus.post(1);
+        eventBus.post(1L);
+        eventBus.post(new Foo("hehe","haha"));
     }
 }
