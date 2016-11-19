@@ -1,3 +1,5 @@
+package elasticjobDemo;
+
 import com.dangdang.ddframe.job.api.AbstractPerpetualElasticJob;
 import com.dangdang.ddframe.job.api.JobExecutionMultipleShardingContext;
 
@@ -28,7 +30,7 @@ public class PerpetualElasticDemoJob extends AbstractPerpetualElasticJob<List<In
 
     @Override
     protected boolean processData(JobExecutionMultipleShardingContext jobExecutionMultipleShardingContext, List<Integer> integers) {
-        System.out.println("PerpetualElasticDemoJob:processData: "+integers.size());
+        System.out.println("elasticjobDemo.PerpetualElasticDemoJob:processData: "+integers.size());
         return true;
     }
 }

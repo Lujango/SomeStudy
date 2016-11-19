@@ -1,3 +1,5 @@
+package elasticjobDemo;
+
 import com.dangdang.ddframe.job.api.JobConfiguration;
 import com.dangdang.ddframe.job.schedule.JobController;
 import com.dangdang.ddframe.reg.base.CoordinatorRegistryCenter;
@@ -24,7 +26,7 @@ public class JobDemo {
     private CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(zkConfig);
 
     // 定义作业1配置对象
-    private JobConfiguration jobConfig1 = new JobConfiguration("oneOffElasticDemoJob", oneOffElasticDemoJob.class, 10, "0/5 * * * * ?");
+    private JobConfiguration jobConfig1 = new JobConfiguration("elasticjobDemo.oneOffElasticDemoJob", oneOffElasticDemoJob.class, 10, "0/5 * * * * ?");
 
     // 定义作业2配置对象
     private JobConfiguration jobConfig2 = new JobConfiguration("perpetualElasticDemoJob", PerpetualElasticDemoJob.class, 10, "0/5 * * * * ?");

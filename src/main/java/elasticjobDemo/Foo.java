@@ -1,3 +1,5 @@
+package elasticjobDemo;
+
 /**
  * All rights Reserved, Designed By Migu.cn
  *

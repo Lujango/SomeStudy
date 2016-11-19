@@ -1,3 +1,5 @@
+package elasticjobDemo;
+
 import com.dangdang.ddframe.job.api.AbstractOneOffElasticJob;
 import com.dangdang.ddframe.job.api.JobExecutionMultipleShardingContext;
 
@@ -20,9 +22,9 @@ public class oneOffElasticDemoJob extends AbstractOneOffElasticJob {
     protected void process(JobExecutionMultipleShardingContext jobExecutionMultipleShardingContext) {
 
         try{
-            System.out.println("oneOffElasticDemoJob:process start");
+            System.out.println("elasticjobDemo.oneOffElasticDemoJob:process start");
             TimeUnit.SECONDS.sleep(10);
-            System.out.println("oneOffElasticDemoJob:process stop");
+            System.out.println("elasticjobDemo.oneOffElasticDemoJob:process stop");
         }catch (Exception e){
             e.printStackTrace();
         }
