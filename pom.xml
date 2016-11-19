@@ -8,8 +8,6 @@
     <artifactId>test1</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-
-
         <!-- 引入elastic-job核心模块 -->
         <dependency>
             <groupId>com.dangdang</groupId>
