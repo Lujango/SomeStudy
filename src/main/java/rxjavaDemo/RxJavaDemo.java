@@ -2,10 +2,13 @@ package rxjavaDemo;
 
 import com.google.common.collect.Lists;
 import rx.Observable;
+import rx.Scheduler;
 import rx.Single;
 import rx.Subscriber;
+import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 import java.util.List;
 
@@ -196,7 +199,37 @@ public class RxJavaDemo {
         });
     }
 
+    // 调度器
+    public void schedulerRxJava(){
+        Scheduler.Worker worker = Schedulers.newThread().createWorker();
+        worker.schedule(new Action0() {
 
+            @Override
+            public void call() {
+                //
+            }
+
+        });
+
+
+
+        // 递归调度器
+        Scheduler.Worker worker1 = Schedulers.newThread().createWorker();
+        worker.schedule(new Action0() {
+
+            @Override
+            public void call() {
+               // yourWork();
+                // recurse until unsubscribed (schedule will do nothing if unsubscribed)
+                worker1.schedule(this);
+            }
+
+        });
+
+
+        worker.unsubscribe();
+
+    }
 
 
     void saveTitle(String title) {
