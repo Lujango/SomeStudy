@@ -293,12 +293,63 @@ public class RxJavaDemo {
                     @Override
                     public void onNext(Integer integer) {
                         list.add(integer);
-                        System.out.println("------>group:" + integerIntegerGroupedObservable.getKey() + "  value:" + integer+":"+list.size());
+                        System.out.println("------>group:" + integerIntegerGroupedObservable.getKey() + "  value:" + integer+":");
+                        System.out.println(list);
                     }
                 });
             }
         });
     }
+
+    //
+
+    /**
+     * 测试执行效率
+     * for rxjava 40:85
+     * 大概两倍
+     */
+    public void simple4RxJava(){
+        List<Integer> list = Lists.newArrayList();
+        for (int i = 0; i < 10000; i++) {
+            list.add(i);
+        }
+
+        System.out.println(System.currentTimeMillis());
+
+        for (int i = 0; i < list.size(); i++) {
+            if (i%2==0){
+                System.out.print(i);
+            }
+        }
+        System.out.println("");
+        System.out.println(System.currentTimeMillis());
+
+        Observable.from(list).filter(new Func1<Integer, Boolean>() {
+            @Override
+            public Boolean call(Integer integer) {
+                return integer%2==0;
+            }
+        }).subscribe(new Subscriber<Integer>() {
+            @Override
+            public void onCompleted() {
+                System.out.println("");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                System.out.print(integer);
+            }
+        });
+        System.out.println(System.currentTimeMillis());
+
+    }
+
+
 
 
     void saveTitle(String title) {
@@ -314,11 +365,12 @@ public class RxJavaDemo {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
        // new RxJavaDemo().simpleRxJava();
         //new RxJavaDemo().simple2RxJava();
        // new RxJavaDemo().scanRxJava();
-        new RxJavaDemo().groupByRxJava();
+      //  new RxJavaDemo().groupByRxJava();
+        new RxJavaDemo().simple4RxJava();
 
     }
 
