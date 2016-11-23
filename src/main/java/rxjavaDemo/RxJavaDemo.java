@@ -1,6 +1,7 @@
 package rxjavaDemo;
 
 import com.google.common.collect.Lists;
+import com.oracle.tools.packager.Log;
 import rx.*;
 import rx.functions.Action0;
 import rx.functions.Action1;
@@ -310,10 +311,10 @@ public class RxJavaDemo {
      */
     public void simple4RxJava(){
         List<Integer> list = Lists.newArrayList();
-        for (int i = 0; i < 10000; i++) {
+       /* for (int i = 0; i < 10000; i++) {
             list.add(i);
         }
-
+*/
         System.out.println(System.currentTimeMillis());
 
         for (int i = 0; i < list.size(); i++) {
@@ -332,7 +333,7 @@ public class RxJavaDemo {
         }).subscribe(new Subscriber<Integer>() {
             @Override
             public void onCompleted() {
-                System.out.println("");
+                System.out.println("onCompleted");
             }
 
             @Override
@@ -350,7 +351,23 @@ public class RxJavaDemo {
     }
 
 
-
+    void test(){
+        Long hehe = null;
+        Observable.just(1l).flatMap(new Func1<Long, Observable<Long>>() {
+            @Override
+            public Observable<Long> call(Long integer) {
+                if (integer==null){
+                    System.out.println("test");
+                }
+                return Observable.just(integer);
+            }
+        }).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long integer) {
+                System.out.println(integer);
+            }
+        });
+    }
 
     void saveTitle(String title) {
         System.out.println(title);
@@ -370,7 +387,8 @@ public class RxJavaDemo {
         //new RxJavaDemo().simple2RxJava();
        // new RxJavaDemo().scanRxJava();
       //  new RxJavaDemo().groupByRxJava();
-        new RxJavaDemo().simple4RxJava();
+        //new RxJavaDemo().simple4RxJava();
+        new RxJavaDemo().test();
 
     }
 
