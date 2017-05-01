@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lujango.com</groupId>
-    <artifactId>test1</artifactId>
+    <artifactId>somestudy</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <!-- 引入elastic-job核心模块 -->
