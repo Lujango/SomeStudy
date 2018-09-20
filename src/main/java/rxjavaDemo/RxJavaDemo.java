@@ -1,7 +1,6 @@
 package rxjavaDemo;
 
 import com.google.common.collect.Lists;
-import com.oracle.tools.packager.Log;
 import rx.*;
 import rx.functions.Action0;
 import rx.functions.Action1;
